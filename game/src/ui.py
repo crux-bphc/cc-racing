@@ -12,7 +12,6 @@ BORDER_THICKNESS = 2
 
 
 def draw_ui_table(screen, cars, font, show_speed, elapsed_time):
-
     num_rows = len(cars)
     table_width = 300
     table_height = HEADER_HEIGHT + num_rows * ROW_HEIGHT + PADDING * 2  # Added padding

@@ -5,7 +5,6 @@ from .settings import SCREEN_WIDTH, SCREEN_HEIGHT
 
 class Track:
     def __init__(self, path_image, checkpoints):
-
         self.image = pygame.image.load(
             os.path.join("game", "assets", path_image)
         ).convert()

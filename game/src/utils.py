@@ -2,7 +2,6 @@ import importlib.util
 
 
 def load_ai(path):
-
     spec = importlib.util.spec_from_file_location("ai_module", path)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
