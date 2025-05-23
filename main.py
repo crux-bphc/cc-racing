@@ -18,6 +18,11 @@ def main():
         cfg = json.load(f)
 
     pygame.init()
+    pygame.mixer.init()
+    pygame.mixer.music.load("game/assets/bgm.mp3")
+    pygame.mixer.music.set_volume(0.25)
+    pygame.mixer.music.play(-1)  # loop forever
+
     font = pygame.font.SysFont(None, 24)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("CRUx CC Racing")
@@ -39,6 +44,8 @@ def main():
     time_font = pygame.font.SysFont(None, 48)
     race_timer = 0.0
 
+    is_muted = False
+
     while True:
         dt = clock.tick(FPS) / 1000.0
 
@@ -54,7 +61,17 @@ def main():
                 elif (
                     e.key == pygame.K_SPACE and countdown_timer < 0 and not race_started
                 ):
+                    s = pygame.mixer.Sound("game/assets/start.mp3")
+                    s.set_volume(0.5)
+                    s.play(loops=0)
+
                     countdown_timer = 3.0
+                elif e.key == pygame.K_m:
+                    is_muted = not is_muted
+                    if is_muted:
+                        pygame.mixer.pause()
+                    else:
+                        pygame.mixer.unpause()
 
         if countdown_timer >= 0:
             countdown_timer -= dt

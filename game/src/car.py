@@ -34,6 +34,11 @@ class Car:
         self._trail_timer = 0
         self.last_lap_time = None
 
+        self.engine_sound = pygame.mixer.Sound("game/assets/engine.wav")
+        self.engine_sound.set_volume(0.4)
+        self.engine_channel = self.engine_sound.play(loops=-1)
+        self.engine_channel.pause()  # Start paused
+
     def update(self, track, dt):
         old = (self.x, self.y, self.angle, self.speed)
         sensor_data, endpoints, origin = self.read_sensors(track)
@@ -49,6 +54,14 @@ class Car:
                 self.speed = max(self.speed - 0.1 * dt, 0)
             elif self.speed < 0:
                 self.speed = min(self.speed + 0.1 * dt, 0)
+
+        if self.speed > 10:
+            self.engine_channel.unpause()
+        else:
+            self.engine_channel.pause()
+
+        speed_ratio = abs(self.speed) / self.params["top_speed"]
+        self.engine_channel.set_volume(0.6 + 0.4 * speed_ratio)
 
         self.speed = max(
             -self.params["top_speed"], min(self.speed, self.params["top_speed"])
