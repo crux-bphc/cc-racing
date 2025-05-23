@@ -33,13 +33,11 @@ D: Toggle debug view to show sensor rays and checkpoints
 
 T: Toggle the on-screen dashboard between current speed and last lap time
 
+M: Mute music
 
 ## 🤖 How to Add a New AI
 
 To participate, you'll need to create an AI script that controls your car's behavior.
-
-
-
 
 ### Step 1: Copy the Example
 
@@ -86,7 +84,6 @@ Add a new car entry in `config.py`:
 }
 ```
 
-
 ## 📡 Sensor Info
 
 The `sensors` dictionary passed to `ai_step` contains:
@@ -96,8 +93,6 @@ The `sensors` dictionary passed to `ai_step` contains:
 - `right`: Distance to obstacle on the right
 
 Larger values mean more distance.
-
-
 
 ## 👥 Contributing
 

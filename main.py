@@ -69,9 +69,9 @@ def main():
                 elif e.key == pygame.K_m:
                     is_muted = not is_muted
                     if is_muted:
-                        pygame.mixer.pause()
+                        pygame.mixer.music.pause()
                     else:
-                        pygame.mixer.unpause()
+                        pygame.mixer.music.unpause()
 
         if countdown_timer >= 0:
             countdown_timer -= dt
