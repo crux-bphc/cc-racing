@@ -23,7 +23,7 @@ def draw_ui_table(screen, cars, font, show_speed, elapsed_time):
     pygame.draw.rect(screen, BORDER_COLOR, table_rect, BORDER_THICKNESS)
 
     headers = "No. | Lap | "
-    headers += "Speed (m/s)" if show_speed else "Last Lap (s)"
+    headers += "Speed (km/h)" if show_speed else "Last Lap (s)"
     header_text_surface = font.render(headers, True, TEXT_COLOR)
     screen.blit(header_text_surface, (TABLE_X + PADDING, TABLE_Y + PADDING))
 
