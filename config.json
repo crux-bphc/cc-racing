@@ -10,8 +10,8 @@
     {
       "start_x": 600,
       "start_y": 120,
-      "sprite": "game/assets/car_blue.png",
-      "color": "blue",
+      "sprite": "game/assets/car_green.png",
+      "color": "green",
       "ai_path": "ai/example.py"
     }
   ]
