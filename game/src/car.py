@@ -51,7 +51,7 @@ class Car:
         self.sensor_origin = origin
         controls = self.ai_logic(sensor_data, self.speed)
 
-        throttle = controls.get("throttle", 0)
+        throttle = max(-1, min(controls.get("throttle", 0), 1))
         self.speed += throttle * self.params["accel"] * dt
 
         if abs(throttle) < 0.01:
@@ -72,9 +72,8 @@ class Car:
             -self.params["top_speed"], min(self.speed, self.params["top_speed"])
         )
 
-        self.angle = (
-            self.angle + controls.get("steering", 0) * self.params["turn"] * dt
-        ) % 360
+        steering = max(-1, min(controls.get("steering", 0), 1))
+        self.angle = (self.angle + steering * self.params["turn"] * dt) % 360
 
         self.image = pygame.transform.rotate(self.original_image, -self.angle)
         self.mask = pygame.mask.from_surface(self.image)
