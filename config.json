@@ -1,0 +1,18 @@
+{
+  "track_image": "game/assets/track1.png",
+  "checkpoints": [
+    [1060, 350],
+    [600, 475],
+    [230, 390],
+    [690, 120]
+  ],
+  "cars": [
+    {
+      "start_x": 600,
+      "start_y": 120,
+      "sprite": "game/assets/car_blue.png",
+      "color": "blue",
+      "ai_path": "ai/example.py"
+    }
+  ]
+}
