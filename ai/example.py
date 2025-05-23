@@ -31,9 +31,9 @@ def ai_step(sensors, speed):
 
     # Turning logic
     if left > right:
-        turn = -0.5 * (1 - right / (left + 0.01))
+        turn = -0.9 * (1 - right / (left + 0.01))
     elif right > left:
-        turn = 0.5 * (1 - left / (right + 0.01))
+        turn = 0.9 * (1 - left / (right + 0.01))
     else:
         turn = 0
 
