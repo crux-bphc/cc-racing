@@ -1,10 +1,13 @@
+import os
 import pygame
 import math
 
 
 class Car:
     def __init__(self, x, y, sprite_path, color, params, ai_logic):
-        img = pygame.image.load(sprite_path).convert_alpha()
+        img = pygame.image.load(
+            os.path.join("game", "assets", sprite_path)
+        ).convert_alpha()
         w = 25
         h = int(img.get_height() * (w / img.get_width()))
         self.original_image = pygame.transform.smoothscale(img, (w, h))
@@ -34,12 +37,14 @@ class Car:
         self._trail_timer = 0
         self.last_lap_time = None
 
-        self.engine_sound = pygame.mixer.Sound("game/assets/engine.wav")
+        self.engine_sound = pygame.mixer.Sound(
+            os.path.join("game", "assets", "engine.wav")
+        )
         self.engine_sound.set_volume(0.4)
         self.engine_channel = self.engine_sound.play(loops=-1)
         self.engine_channel.pause()  # Start paused
 
-    def update(self, track, dt):
+    def update(self, track, dt, is_muted=False):
         old = (self.x, self.y, self.angle, self.speed)
         sensor_data, endpoints, origin = self.read_sensors(track)
         self.sensor_endpoints = endpoints
@@ -55,13 +60,13 @@ class Car:
             elif self.speed < 0:
                 self.speed = min(self.speed + 0.1 * dt, 0)
 
-        if self.speed > 10:
-            self.engine_channel.unpause()
-        else:
-            self.engine_channel.pause()
-
         speed_ratio = abs(self.speed) / self.params["top_speed"]
         self.engine_channel.set_volume(0.6 + 0.4 * speed_ratio)
+
+        if is_muted or self.speed < 10:
+            self.engine_channel.pause()
+        else:
+            self.engine_channel.unpause()
 
         self.speed = max(
             -self.params["top_speed"], min(self.speed, self.params["top_speed"])

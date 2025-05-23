@@ -1,3 +1,4 @@
+import os
 import pygame
 import sys
 import json
@@ -19,7 +20,7 @@ def main():
 
     pygame.init()
     pygame.mixer.init()
-    pygame.mixer.music.load("game/assets/bgm.mp3")
+    pygame.mixer.music.load(os.path.join("game", "assets", "bgm.mp3"))
     pygame.mixer.music.set_volume(0.25)
     pygame.mixer.music.play(-1)  # loop forever
 
@@ -61,7 +62,7 @@ def main():
                 elif (
                     e.key == pygame.K_SPACE and countdown_timer < 0 and not race_started
                 ):
-                    s = pygame.mixer.Sound("game/assets/start.mp3")
+                    s = pygame.mixer.Sound(os.path.join("game", "assets", "start.mp3"))
                     s.set_volume(0.5)
                     s.play(loops=0)
 
@@ -82,7 +83,7 @@ def main():
         elif race_started:
             race_timer += dt
             for car in cars:
-                car.update(track, dt)
+                car.update(track, dt, is_muted=is_muted)
 
         screen.fill((0, 0, 0))
         track.draw(screen)

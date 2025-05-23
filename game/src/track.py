@@ -1,10 +1,14 @@
+import os
 import pygame
 from .settings import SCREEN_WIDTH, SCREEN_HEIGHT
 
 
 class Track:
     def __init__(self, path_image, checkpoints):
-        self.image = pygame.image.load(path_image).convert()
+
+        self.image = pygame.image.load(
+            os.path.join("game", "assets", path_image)
+        ).convert()
         self.image = pygame.transform.smoothscale(
             self.image, (SCREEN_WIDTH, SCREEN_HEIGHT)
         )
