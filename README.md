@@ -92,6 +92,9 @@ The `sensors` dictionary passed to `ai_step` contains:
 - `left`: Distance to obstacle on the left
 - `right`: Distance to obstacle on the right
 
+![image](https://github.com/user-attachments/assets/71e36ca9-b0f8-4004-a194-82339edf5070)
+
+
 Larger values mean more distance.
 
 ## 👥 Contributing
