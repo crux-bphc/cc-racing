@@ -47,8 +47,13 @@ class Car:
     def update(self, track, dt, is_muted=False):
         old = (self.x, self.y, self.angle, self.speed)
         sensor_data, endpoints, origin = self.read_sensors(track)
+
+        sensor_data["speed"] = self.speed
+        sensor_data["size"] = self.w
+
         self.sensor_endpoints = endpoints
         self.sensor_origin = origin
+
         controls = self.ai_logic(sensor_data, self.speed)
 
         throttle = max(-1, min(controls.get("throttle", 0), 1))
