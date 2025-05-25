@@ -94,9 +94,15 @@ The `sensors` dictionary passed to `ai_step` contains:
 
 ![image](https://github.com/user-attachments/assets/71e36ca9-b0f8-4004-a194-82339edf5070)
 
-
 Larger values mean more distance.
+
+## 🏎️ Change Track
+
+To change the track, set the `TRACK` variable in `main.py` to the desired track number (e.g., `TRACK = 1`).
+
+```python
 
 ## 👥 Contributing
 
 Feel free to fork the repo, add new features, or optimize the racing engine. PRs are welcome!
+```

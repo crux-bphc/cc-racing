@@ -1,18 +1,31 @@
 {
-  "track_image": "track1.png",
-  "checkpoints": [
-    [1060, 350],
-    [600, 475],
-    [230, 390],
-    [690, 120]
-  ],
-  "cars": [
-    {
-      "start_x": 600,
-      "start_y": 120,
-      "sprite": "car_green.png",
-      "color": "green",
-      "ai_path": "ai/example.py"
-    }
-  ]
+    "track_image": "track2.png",
+    "checkpoints": [
+        [
+            1020,
+            350
+        ],
+        [
+            650,
+            200
+        ],
+        [
+            215,
+            390
+        ],
+        [
+            700,
+            145
+        ]
+    ],
+    "cars": [
+        {
+            "start_x": 600,
+            "start_y": 145,
+            "sprite": "car_green.png",
+            "color": "green",
+            "ai_path": "ai/example.py",
+            "size": 20
+        }
+    ]
 }

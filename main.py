@@ -12,9 +12,38 @@ show_speed = True
 countdown_timer = -1
 race_started = False
 
+TRACK = "2"
+
+
+def change_track(track_name):
+    with open("tracks.json") as f:
+        tracks = json.load(f)
+
+    if track_name not in tracks:
+        print(f"Track '{track_name}' not found in tracks.json")
+        return
+
+    # Load the new track configuration
+    track_config = tracks[track_name]
+    with open("config.json") as f:
+        cfg = json.load(f)
+
+    cfg["track_image"] = track_config["image"]
+    cfg["checkpoints"] = track_config["checkpoints"]
+    for car in cfg["cars"]:
+        car["start_x"] = track_config["start_x"]
+        car["start_y"] = track_config["start_y"]
+        car["size"] = track_config.get("car_size", 25)
+
+    with open("config.json", "w") as f:
+        json.dump(cfg, f, indent=4)
+
 
 def main():
     global show_debug, show_speed, countdown_timer, race_started
+
+    change_track(TRACK)
+
     with open("config.json") as f:
         cfg = json.load(f)
 
@@ -38,6 +67,7 @@ def main():
             c["color"],
             load_ai(c["ai_path"])[0],
             load_ai(c["ai_path"])[1],
+            size=c.get("size", 25),
         )
         for c in cfg["cars"]
     ]

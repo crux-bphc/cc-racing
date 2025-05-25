@@ -4,11 +4,11 @@ import math
 
 
 class Car:
-    def __init__(self, x, y, sprite_path, color, params, ai_logic):
+    def __init__(self, x, y, sprite_path, color, params, ai_logic, size=25):
         img = pygame.image.load(
             os.path.join("game", "assets", sprite_path)
         ).convert_alpha()
-        w = 25
+        w = size
         h = int(img.get_height() * (w / img.get_width()))
         self.original_image = pygame.transform.smoothscale(img, (w, h))
         self.w, self.h = w, h
