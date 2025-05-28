@@ -22,10 +22,66 @@
         {
             "start_x": 600,
             "start_y": 145,
+            "size": 20,
+            "sprite": "car_cyan.png",
+            "color": "cyan",
+            "ai_path": "ai/Radian6405.py"
+        },
+        {
+            "start_x": 600,
+            "start_y": 145,
+            "size": 20,
+            "sprite": "car_red.png",
+            "color": "red",
+            "ai_path": "ai/mahaveer_raghunathan.py"
+        },
+        {
+            "start_x": 600,
+            "start_y": 145,
+            "size": 20,
+            "sprite": "car_pink.png",
+            "color": "pink",
+            "ai_path": "ai/sigmoid.py"
+        },
+        {
+            "start_x": 600,
+            "start_y": 145,
+            "size": 20,
             "sprite": "car_green.png",
             "color": "green",
-            "ai_path": "ai/example.py",
-            "size": 20
+            "ai_path": "ai/test_min_logic.py"
+        },
+        {
+            "start_x": 600,
+            "start_y": 145,
+            "size": 20,
+            "sprite": "car_blue.png",
+            "color": "blue",
+            "ai_path": "ai/a.py"
+        },
+        {
+            "start_x": 600,
+            "start_y": 145,
+            "size": 20,
+            "sprite": "car_purple.png",
+            "color": "purple",
+            "ai_path": "ai/ihateconsys2.py"
+        },
+        {
+            "start_x": 600,
+            "start_y": 145,
+            "size": 20,
+            "sprite": "car_orange.png",
+            "color": "orange",
+            "ai_path": "ai/smol_brain.py"
+        },
+        {
+            "start_x": 600,
+            "start_y": 145,
+            "size": 20,
+            "sprite": "car_black.png",
+            "color": "black",
+            "ai_path": "ai/aten2005.py"
         }
     ]
 }

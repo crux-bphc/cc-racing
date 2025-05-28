@@ -76,6 +76,7 @@ def main():
     race_timer = 0.0
 
     is_muted = False
+    paused = False
 
     while True:
         dt = clock.tick(FPS) / 1000.0
@@ -103,6 +104,13 @@ def main():
                         pygame.mixer.music.pause()
                     else:
                         pygame.mixer.music.unpause()
+                elif e.key == pygame.K_p:
+                    paused = not paused
+                    if paused:
+                        is_muted = True
+                        pygame.mixer.music.pause()
+                        for car in cars:
+                            car.engine_channel.pause()
 
         if countdown_timer >= 0:
             countdown_timer -= dt
@@ -110,10 +118,10 @@ def main():
                 countdown_timer = -1
                 race_started = True
                 race_timer = 0.0
-        elif race_started:
+        elif race_started and not paused:
             race_timer += dt
             for car in cars:
-                car.update(track, dt, is_muted=is_muted)
+                car.update(track, dt, current_time=race_timer, is_muted=is_muted)
 
         screen.fill((0, 0, 0))
         track.draw(screen)

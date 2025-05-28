@@ -40,11 +40,11 @@ class Car:
         self.engine_sound = pygame.mixer.Sound(
             os.path.join("game", "assets", "engine.wav")
         )
-        self.engine_sound.set_volume(0.4)
+        self.engine_sound.set_volume(0.01)
         self.engine_channel = self.engine_sound.play(loops=-1)
         self.engine_channel.pause()  # Start paused
 
-    def update(self, track, dt, is_muted=False):
+    def update(self, track, dt, current_time, is_muted=False):
         old = (self.x, self.y, self.angle, self.speed)
         sensor_data, endpoints, origin = self.read_sensors(track)
 
@@ -102,7 +102,7 @@ class Car:
             self.mask = pygame.mask.from_surface(self.image)
             self.rect = self.image.get_rect(center=(self.x, self.y))
 
-        self.check_lap_progress(track)
+        self.check_lap_progress(track, current_time)
 
         # Trail
         self._trail_timer += dt
@@ -181,14 +181,14 @@ class Car:
 
         return sensor_data, endpoints, origin
 
-    def check_lap_progress(self, track):
+    def check_lap_progress(self, track, current_time):
         if self.checkpoint_index < len(track.checkpoints):
             cx, cy = track.checkpoints[self.checkpoint_index]
             if math.hypot(self.x - cx, self.y - cy) < 100:
                 self.checkpoint_index += 1
                 if self.checkpoint_index == len(track.checkpoints):
                     self.lap += 1
-                    self.last_lap_time = pygame.time.get_ticks() / 1000.0 - self.lap
+                    self.last_lap_time = current_time
                     self.checkpoint_index = 0
 
     def validate_and_adjust_params(self):

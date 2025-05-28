@@ -37,6 +37,14 @@ def draw_ui_table(screen, cars, font, show_speed, elapsed_time):
         ),
     )
 
+    cars.sort(
+        key=lambda car: (
+            -car.lap,
+            -car.checkpoint_index,
+            car.last_lap_time if car.last_lap_time is not None else float("inf"),
+        )
+    )
+
     for idx, car in enumerate(cars):
         y_offset = TABLE_Y + HEADER_HEIGHT + idx * ROW_HEIGHT + PADDING
 
