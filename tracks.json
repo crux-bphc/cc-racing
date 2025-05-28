@@ -22,5 +22,43 @@
     "start_x": 600,
     "start_y": 145,
     "car_size": 20
+  },
+  "3": {
+    "image": "track3.png",
+    "checkpoints": [
+      [797, 250],
+      [406, 125],
+      [350, 38],
+      [959, 500],
+      [438, 638],
+      [484, 406]
+    ],
+    "start_x": 438,
+    "start_y": 406,
+    "car_size": 20
+  },
+  "4": {
+    "image": "track4.png",
+    "checkpoints": [
+      [990, 440],
+      [600, 55],
+      [200, 440],
+      [620, 620]
+    ],
+    "start_x": 458,
+    "start_y": 620,
+    "car_size": 25
+  },
+  "5": {
+    "image": "track5.png",
+    "checkpoints": [
+      [860, 450],
+      [340, 385],
+      [520, 100],
+      [950, 295]
+    ],
+    "start_x": 860,
+    "start_y": 295,
+    "car_size": 20
   }
 }
